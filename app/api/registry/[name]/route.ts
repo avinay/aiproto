@@ -2,6 +2,23 @@ import { NextResponse } from 'next/server'
 import fs from 'fs'
 import path from 'path'
 
+interface RegistryFile {
+  name: string
+  path: string
+  target: string
+}
+
+interface RegistryItem {
+  name: string
+  type: string
+  registryDependencies: string[]
+  files: RegistryFile[]
+}
+
+interface Registry {
+  registry: RegistryItem[]
+}
+
 export async function GET(
   request: Request,
   { params }: { params: { name: string } }
@@ -10,9 +27,9 @@ export async function GET(
     const { name } = params
     const registryPath = path.join(process.cwd(), 'public', 'registry.json')
     const registryContent = fs.readFileSync(registryPath, 'utf-8')
-    const registry = JSON.parse(registryContent)
+    const registry: Registry = JSON.parse(registryContent)
     
-    const item = registry.registry.find((item: any) => item.name === name)
+    const item = registry.registry.find((item: RegistryItem) => item.name === name)
     
     if (!item) {
       return NextResponse.json(
@@ -23,7 +40,7 @@ export async function GET(
     
     // Read all the files referenced in the registry item
     const files = await Promise.all(
-      item.files.map(async (file: any) => {
+      item.files.map(async (file: RegistryFile) => {
         try {
           const filePath = path.join(process.cwd(), file.path)
           const content = fs.readFileSync(filePath, 'utf-8')
