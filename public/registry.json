@@ -3,7 +3,7 @@
   "style": "default",
   "rsc": true,
   "tsx": true,
-  "baseUrl": "https://your-deployed-url.vercel.app",
+  "baseUrl": "https://aiproto-avinay.vercel.app",
   "tailwind": {
     "config": "tailwind.config.ts",
     "css": "app/globals.css",
