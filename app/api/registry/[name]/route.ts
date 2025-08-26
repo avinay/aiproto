@@ -21,10 +21,10 @@ interface Registry {
 
 export async function GET(
   request: Request,
-  { params }: { params: { name: string } }
+  { params }: { params: Promise<{ name: string }> }
 ) {
   try {
-    const { name } = params
+    const { name } = await params
     const registryPath = path.join(process.cwd(), 'public', 'registry.json')
     const registryContent = fs.readFileSync(registryPath, 'utf-8')
     const registry: Registry = JSON.parse(registryContent)

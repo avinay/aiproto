@@ -2,7 +2,6 @@ import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { Input } from "@/components/ui/input"
 import { 
   Palette, 
   Code, 
@@ -102,7 +101,7 @@ export default function Home() {
                 <CardContent>
                   <div className="flex items-center gap-2 text-sm text-muted-foreground">
                     <ExternalLink className="h-4 w-4" />
-                    Click "Open in v0" buttons in the registry
+                    Click &quot;Open in v0&quot; buttons in the registry
                   </div>
                 </CardContent>
               </Card>
@@ -186,7 +185,7 @@ export default function Home() {
                         1. Go to the registry page
                       </p>
                       <p className="text-sm text-muted-foreground">
-                        2. Click "Open in v0" on any component
+                        2. Click &quot;Open in v0&quot; on any component
                       </p>
                       <p className="text-sm text-muted-foreground">
                         3. Start building with AI assistance
