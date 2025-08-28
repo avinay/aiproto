@@ -128,6 +128,7 @@ interface FormSelectProps extends React.ComponentProps<typeof Select> {
   hint?: string
   placeholder?: string
   options: { value: string; label: string }[]
+  className?: string
 }
 
 const FormSelect = React.forwardRef<HTMLButtonElement, FormSelectProps>(

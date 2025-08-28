@@ -5,11 +5,7 @@ import { SalesforceCard, SalesforceCardContent, SalesforceCardHeader, Salesforce
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { 
-  User, 
   Settings, 
-  Home, 
-  FileText, 
-  Mail,
   Plus,
   Save,
   Trash2,
