@@ -120,3 +120,110 @@
     @apply bg-background text-foreground;
   }
 }
+
+/* Salesforce Lightning Design System Colors */
+:root {
+  /* Primary Colors - Salesforce Blue */
+  --slds-blue-50: #e3f2fd;
+  --slds-blue-100: #bbdefb;
+  --slds-blue-200: #90caf9;
+  --slds-blue-300: #64b5f6;
+  --slds-blue-400: #42a5f5;
+  --slds-blue-500: #2196f3;
+  --slds-blue-600: #1976d2;
+  --slds-blue-700: #1565c0;
+  --slds-blue-800: #0d47a1;
+  --slds-blue-900: #0a3d91;
+
+  /* Salesforce Green */
+  --slds-green-50: #e8f5e8;
+  --slds-green-100: #c8e6c9;
+  --slds-green-200: #a5d6a7;
+  --slds-green-300: #81c784;
+  --slds-green-400: #66bb6a;
+  --slds-green-500: #4caf50;
+  --slds-green-600: #388e3c;
+  --slds-green-700: #2e7d32;
+  --slds-green-800: #1b5e20;
+  --slds-green-900: #0d4f14;
+
+  /* Neutral Colors - Grays */
+  --slds-gray-50: #fafafa;
+  --slds-gray-100: #f5f5f5;
+  --slds-gray-200: #eeeeee;
+  --slds-gray-300: #e0e0e0;
+  --slds-gray-400: #bdbdbd;
+  --slds-gray-500: #9e9e9e;
+  --slds-gray-600: #757575;
+  --slds-gray-700: #616161;
+  --slds-gray-800: #424242;
+  --slds-gray-900: #212121;
+
+  /* Semantic Colors */
+  --slds-success: #04844b;
+  --slds-success-light: #e8f5e8;
+  --slds-success-dark: #2e7d32;
+
+  --slds-warning: #fe9339;
+  --slds-warning-light: #fff3e0;
+  --slds-warning-dark: #f57c00;
+
+  --slds-error: #ea001e;
+  --slds-error-light: #ffebee;
+  --slds-error-dark: #c62828;
+
+  --slds-info: #0176d3;
+  --slds-info-light: #e3f2fd;
+  --slds-info-dark: #1565c0;
+
+  /* Additional Salesforce Colors */
+  --slds-purple: #9c27b0;
+  --slds-purple-light: #f3e5f5;
+  --slds-purple-dark: #7b1fa2;
+
+  --slds-orange: #ff9800;
+  --slds-orange-light: #fff3e0;
+  --slds-orange-dark: #f57c00;
+
+  --slds-red: #f44336;
+  --slds-red-light: #ffebee;
+  --slds-red-dark: #d32f2f;
+
+  --slds-pink: #e91e63;
+  --slds-pink-light: #fce4ec;
+  --slds-pink-dark: #c2185b;
+
+  --slds-indigo: #3f51b5;
+  --slds-indigo-light: #e8eaf6;
+  --slds-indigo-dark: #303f9f;
+
+  --slds-teal: #009688;
+  --slds-teal-light: #e0f2f1;
+  --slds-teal-dark: #00695c;
+
+  /* Salesforce Brand Colors */
+  --slds-brand-primary: #0176d3;
+  --slds-brand-secondary: #014486;
+  --slds-brand-tertiary: #032d60;
+
+  /* Background Colors */
+  --slds-bg-primary: #ffffff;
+  --slds-bg-secondary: #f3f2f2;
+  --slds-bg-tertiary: #eef1f6;
+
+  /* Text Colors */
+  --slds-text-primary: #181818;
+  --slds-text-secondary: #514f4d;
+  --slds-text-tertiary: #706e6b;
+  --slds-text-inverse: #ffffff;
+
+  /* Border Colors */
+  --slds-border-primary: #dddbda;
+  --slds-border-secondary: #c9c7c5;
+  --slds-border-tertiary: #b0adab;
+
+  /* Shadow Colors */
+  --slds-shadow-1: rgba(0, 0, 0, 0.1);
+  --slds-shadow-2: rgba(0, 0, 0, 0.15);
+  --slds-shadow-3: rgba(0, 0, 0, 0.2);
+}
