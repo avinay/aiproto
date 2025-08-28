@@ -77,12 +77,32 @@ export default function Home() {
               </CardDescription>
             </CardHeader>
             <CardContent>
-              <Link href="/dashboard">
-                <Button variant="outline" className="w-full">
-                  View Dashboard
-                  <ArrowRight className="h-4 w-4 ml-2" />
-                </Button>
-              </Link>
+              <div className="space-y-2">
+                <Link href="/dashboard">
+                  <Button variant="outline" className="w-full">
+                    View Dashboard
+                    <ArrowRight className="h-4 w-4 ml-2" />
+                  </Button>
+                </Link>
+                <Link href="/sidebar">
+                  <Button variant="outline" className="w-full">
+                    Enhanced Sidebar
+                    <ArrowRight className="h-4 w-4 ml-2" />
+                  </Button>
+                </Link>
+                <Link href="/admission">
+                  <Button variant="outline" className="w-full">
+                    Student Admission
+                    <ArrowRight className="h-4 w-4 ml-2" />
+                  </Button>
+                </Link>
+                <Link href="/salesforce-demo">
+                  <Button variant="outline" className="w-full">
+                    Salesforce Demo
+                    <ArrowRight className="h-4 w-4 ml-2" />
+                  </Button>
+                </Link>
+              </div>
             </CardContent>
           </Card>
         </div>

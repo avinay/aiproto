@@ -8,9 +8,12 @@ import { Input } from "@/components/ui/input"
 import { 
   Sidebar, 
   SidebarHeader, 
+  SidebarSearch,
   SidebarContent, 
+  SidebarSection,
   SidebarItem, 
-  SidebarFooter 
+  SidebarFooter,
+  SidebarUser
 } from "@/components/ui/sidebar"
 import { 
   BarChart3, 
@@ -20,43 +23,94 @@ import {
   FileText, 
   Mail,
   Search,
-  Plus
+  Plus,
+  Zap,
+  Bell,
+  HelpCircle
 } from "lucide-react"
 
 export function Dashboard() {
+  const [collapsed, setCollapsed] = React.useState(false)
+
   return (
     <div className="flex h-screen bg-background">
-      <Sidebar>
-        <SidebarHeader>
-          <h2 className="text-lg font-semibold">AI Proto</h2>
+      <Sidebar collapsed={collapsed} onCollapsedChange={setCollapsed}>
+        <SidebarHeader collapsed={collapsed}>
+          <div className="flex items-center gap-2">
+            <div className="h-8 w-8 rounded-lg bg-primary flex items-center justify-center">
+              <Zap className="h-4 w-4 text-primary-foreground" />
+            </div>
+            <span className="text-lg font-semibold">AI Proto</span>
+          </div>
         </SidebarHeader>
+
+        <SidebarSearch collapsed={collapsed} placeholder="Search..." />
+
         <SidebarContent>
-          <SidebarItem active>
-            <Home className="h-4 w-4" />
-            Dashboard
-          </SidebarItem>
-          <SidebarItem>
-            <Users className="h-4 w-4" />
-            Users
-          </SidebarItem>
-          <SidebarItem>
-            <BarChart3 className="h-4 w-4" />
-            Analytics
-          </SidebarItem>
-          <SidebarItem>
-            <FileText className="h-4 w-4" />
-            Reports
-          </SidebarItem>
-          <SidebarItem>
-            <Mail className="h-4 w-4" />
-            Messages
-          </SidebarItem>
+          <SidebarSection title="Main" collapsed={collapsed}>
+            <SidebarItem 
+              active 
+              icon={<Home className="h-4 w-4" />}
+              collapsed={collapsed}
+            >
+              Dashboard
+            </SidebarItem>
+            <SidebarItem 
+              icon={<Users className="h-4 w-4" />}
+              badge="12"
+              collapsed={collapsed}
+            >
+              Users
+            </SidebarItem>
+            <SidebarItem 
+              icon={<BarChart3 className="h-4 w-4" />}
+              collapsed={collapsed}
+            >
+              Analytics
+            </SidebarItem>
+            <SidebarItem 
+              icon={<FileText className="h-4 w-4" />}
+              badge="3"
+              collapsed={collapsed}
+            >
+              Reports
+            </SidebarItem>
+            <SidebarItem 
+              icon={<Mail className="h-4 w-4" />}
+              collapsed={collapsed}
+            >
+              Messages
+            </SidebarItem>
+          </SidebarSection>
         </SidebarContent>
-        <SidebarFooter>
-          <SidebarItem>
-            <Settings className="h-4 w-4" />
-            Settings
-          </SidebarItem>
+
+        <SidebarFooter collapsed={collapsed}>
+          <SidebarUser
+            name="Admin User"
+            email="admin@aiproto.com"
+            collapsed={collapsed}
+          />
+          <div className="mt-2 space-y-1">
+            <SidebarItem 
+              icon={<Bell className="h-4 w-4" />}
+              badge="2"
+              collapsed={collapsed}
+            >
+              Notifications
+            </SidebarItem>
+            <SidebarItem 
+              icon={<HelpCircle className="h-4 w-4" />}
+              collapsed={collapsed}
+            >
+              Help
+            </SidebarItem>
+            <SidebarItem 
+              icon={<Settings className="h-4 w-4" />}
+              collapsed={collapsed}
+            >
+              Settings
+            </SidebarItem>
+          </div>
         </SidebarFooter>
       </Sidebar>
       

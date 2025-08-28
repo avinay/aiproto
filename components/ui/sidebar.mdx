@@ -1,0 +1,295 @@
+# Sidebar Navigation Component
+
+A comprehensive sidebar navigation component built with your design system, featuring collapsible functionality, nested navigation, search, and user management.
+
+## Features
+
+- **Collapsible Design**: Toggle between expanded and collapsed states
+- **Search Functionality**: Built-in search with collapsed state support
+- **Nested Navigation**: Group navigation items with expandable sections
+- **Badge Support**: Display notifications and counts
+- **User Profile**: Integrated user management section
+- **Responsive**: Works seamlessly across different screen sizes
+- **Accessible**: Full keyboard navigation and screen reader support
+- **Design System Integration**: Uses your custom sidebar color tokens
+
+## Components
+
+### Sidebar
+The main container component that wraps all sidebar content.
+
+```tsx
+<Sidebar collapsed={collapsed} onCollapsedChange={setCollapsed}>
+  {/* Sidebar content */}
+</Sidebar>
+```
+
+**Props:**
+- `collapsed?: boolean` - Controls the collapsed state
+- `onCollapsedChange?: (collapsed: boolean) => void` - Callback when collapsed state changes
+
+### SidebarHeader
+Displays the sidebar header with logo and title.
+
+```tsx
+<SidebarHeader collapsed={collapsed}>
+  <div className="flex items-center gap-2">
+    <div className="h-8 w-8 rounded-lg bg-primary flex items-center justify-center">
+      <Zap className="h-4 w-4 text-primary-foreground" />
+    </div>
+    <span className="text-lg font-semibold">AI Proto</span>
+  </div>
+</SidebarHeader>
+```
+
+**Props:**
+- `collapsed?: boolean` - Adapts layout for collapsed state
+
+### SidebarSearch
+Provides search functionality with collapsed state support.
+
+```tsx
+<SidebarSearch collapsed={collapsed} placeholder="Search navigation..." />
+```
+
+**Props:**
+- `placeholder?: string` - Search input placeholder text
+- `collapsed?: boolean` - Shows icon-only button when collapsed
+
+### SidebarContent
+The main content area for navigation items.
+
+```tsx
+<SidebarContent>
+  {/* Navigation sections and items */}
+</SidebarContent>
+```
+
+### SidebarSection
+Groups related navigation items with an optional title.
+
+```tsx
+<SidebarSection title="Main" collapsed={collapsed}>
+  {/* Navigation items */}
+</SidebarSection>
+```
+
+**Props:**
+- `title?: string` - Section title (hidden when collapsed)
+- `collapsed?: boolean` - Adapts layout for collapsed state
+
+### SidebarItem
+Individual navigation items with icon, badge, and link support.
+
+```tsx
+<SidebarItem 
+  active 
+  icon={<Home className="h-4 w-4" />}
+  badge="12"
+  collapsed={collapsed}
+  href="/dashboard"
+>
+  Dashboard
+</SidebarItem>
+```
+
+**Props:**
+- `active?: boolean` - Highlights the active item
+- `icon?: React.ReactNode` - Icon to display
+- `badge?: string | number` - Badge content for notifications
+- `collapsed?: boolean` - Adapts layout for collapsed state
+- `href?: string` - Makes the item a link
+
+### SidebarGroup
+Creates expandable groups of navigation items.
+
+```tsx
+<SidebarGroup 
+  title="Products" 
+  icon={<Package className="h-4 w-4" />}
+  collapsed={collapsed}
+  defaultOpen
+>
+  <SidebarItem icon={<ShoppingCart className="h-4 w-4" />}>
+    Inventory
+  </SidebarItem>
+  <SidebarItem icon={<Truck className="h-4 w-4" />} badge="5">
+    Orders
+  </SidebarItem>
+</SidebarGroup>
+```
+
+**Props:**
+- `title: string` - Group title
+- `icon?: React.ReactNode` - Group icon
+- `collapsed?: boolean` - Adapts layout for collapsed state
+- `defaultOpen?: boolean` - Initial open state
+
+### SidebarFooter
+Footer section for user profile and additional actions.
+
+```tsx
+<SidebarFooter collapsed={collapsed}>
+  <SidebarUser
+    name="John Doe"
+    email="john@example.com"
+    collapsed={collapsed}
+  />
+  {/* Additional footer items */}
+</SidebarFooter>
+```
+
+**Props:**
+- `collapsed?: boolean` - Adapts layout for collapsed state
+
+### SidebarUser
+Displays user profile information.
+
+```tsx
+<SidebarUser
+  name="John Doe"
+  email="john@example.com"
+  avatar="/path/to/avatar.jpg"
+  collapsed={collapsed}
+/>
+```
+
+**Props:**
+- `name: string` - User's display name
+- `email: string` - User's email address
+- `avatar?: string` - Optional avatar image URL
+- `collapsed?: boolean` - Adapts layout for collapsed state
+
+## Design System Integration
+
+The sidebar component uses your custom design tokens:
+
+- `bg-sidebar` - Sidebar background color
+- `text-sidebar-foreground` - Sidebar text color
+- `bg-sidebar-accent` - Hover state background
+- `text-sidebar-accent-foreground` - Hover state text color
+- `bg-sidebar-primary` - Active state background
+- `text-sidebar-primary-foreground` - Active state text color
+- `border-sidebar-border` - Sidebar border color
+
+## Usage Example
+
+```tsx
+"use client"
+
+import * as React from "react"
+import { 
+  Sidebar, 
+  SidebarHeader, 
+  SidebarSearch,
+  SidebarContent, 
+  SidebarSection,
+  SidebarItem, 
+  SidebarGroup,
+  SidebarFooter,
+  SidebarUser
+} from "@/components/ui/sidebar"
+import { Home, Users, Settings, Zap, Bell } from "lucide-react"
+
+export function MySidebar() {
+  const [collapsed, setCollapsed] = React.useState(false)
+
+  return (
+    <div className="flex h-screen bg-background">
+      <Sidebar collapsed={collapsed} onCollapsedChange={setCollapsed}>
+        <SidebarHeader collapsed={collapsed}>
+          <div className="flex items-center gap-2">
+            <div className="h-8 w-8 rounded-lg bg-primary flex items-center justify-center">
+              <Zap className="h-4 w-4 text-primary-foreground" />
+            </div>
+            <span className="text-lg font-semibold">My App</span>
+          </div>
+        </SidebarHeader>
+
+        <SidebarSearch collapsed={collapsed} placeholder="Search..." />
+
+        <SidebarContent>
+          <SidebarSection title="Main" collapsed={collapsed}>
+            <SidebarItem 
+              active 
+              icon={<Home className="h-4 w-4" />}
+              collapsed={collapsed}
+            >
+              Dashboard
+            </SidebarItem>
+            <SidebarItem 
+              icon={<Users className="h-4 w-4" />}
+              badge="12"
+              collapsed={collapsed}
+            >
+              Users
+            </SidebarItem>
+          </SidebarSection>
+        </SidebarContent>
+
+        <SidebarFooter collapsed={collapsed}>
+          <SidebarUser
+            name="John Doe"
+            email="john@example.com"
+            collapsed={collapsed}
+          />
+          <div className="mt-2 space-y-1">
+            <SidebarItem 
+              icon={<Bell className="h-4 w-4" />}
+              badge="2"
+              collapsed={collapsed}
+            >
+              Notifications
+            </SidebarItem>
+            <SidebarItem 
+              icon={<Settings className="h-4 w-4" />}
+              collapsed={collapsed}
+            >
+              Settings
+            </SidebarItem>
+          </div>
+        </SidebarFooter>
+      </Sidebar>
+      
+      <div className="flex-1">
+        {/* Main content */}
+      </div>
+    </div>
+  )
+}
+```
+
+## Accessibility
+
+The sidebar component includes:
+
+- Proper ARIA labels and roles
+- Keyboard navigation support
+- Focus management
+- Screen reader compatibility
+- High contrast mode support
+
+## Customization
+
+You can customize the sidebar by:
+
+1. **Modifying CSS variables** in your design tokens
+2. **Extending component props** for additional functionality
+3. **Adding custom animations** using the transition classes
+4. **Implementing custom search logic** in the SidebarSearch component
+
+## Browser Support
+
+- Chrome 88+
+- Firefox 87+
+- Safari 14+
+- Edge 88+
+
+## Performance
+
+The sidebar component is optimized for:
+
+- Minimal re-renders using React.memo
+- Efficient state management
+- Smooth animations with CSS transitions
+- Lazy loading of nested content
